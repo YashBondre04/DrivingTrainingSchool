@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #0f172a;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .nav-link-underline {
+    position: relative;
+  }
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #166534;
+    transition: width 0.25s ease;
+  }
+  .nav-link-underline:hover::after {
+    width: 100%;
+  }
+  .card-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+}
