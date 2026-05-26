@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import carSvg from './assets/car.svg';
 import BorderGlow from './components/BorderGlow';
 import LightRays from './components/LightRays';
 import {
@@ -24,9 +25,20 @@ import {
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      
+      const heroEl = document.getElementById('home');
+      if (heroEl) {
+        const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+        setScrolledPastHero(window.scrollY > heroBottom - 80);
+      } else {
+        setScrolledPastHero(window.scrollY > 750);
+      }
+    };
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -44,24 +56,31 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? 'bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm'
-        : 'bg-white border-b border-slate-100'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolledPastHero ? '-translate-y-full opacity-0' : 'translate-y-0'
+      } ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm'
+          : 'bg-white border-b border-slate-100'
+      }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
           <button
             onClick={() => scrollTo('home')}
-            className="flex items-center gap-2.5 group"
+            className="text-left group -ml-[64px] sm:-ml-[68px] md:-ml-[72px]"
           >
-            <div className="w-8 h-8 rounded-lg bg-green-800 flex items-center justify-center">
-              <Car size={16} className="text-white" />
-            </div>
-            <div className="text-left">
-              <p className="text-slate-900 font-bold text-sm leading-tight">Rishab Motor</p>
-              <p className="text-green-800 text-xs font-medium leading-tight tracking-wide">Driving School</p>
+            <div className="flex items-center gap-2 md:gap-3">
+              <img src={carSvg} alt="Rishabh Motor Logo" className="h-9 w-auto object-contain md:h-11" />
+              <div className="flex flex-col justify-center">
+                <span className="text-red-600 font-black text-lg sm:text-2xl uppercase tracking-tight leading-none">
+                  Rishabh Motor
+                </span>
+                <span className="text-slate-700 font-bold text-[8px] sm:text-sm uppercase tracking-wide leading-none mt-0.5 sm:mt-1">
+                  Driving Training School
+                </span>
+              </div>
             </div>
           </button>
 
