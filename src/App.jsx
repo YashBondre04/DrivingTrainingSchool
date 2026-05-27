@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import carSvg from './assets/car.svg';
+import carWebp from './assets/car.webp';
 import BorderGlow from './components/BorderGlow';
 import LightRays from './components/LightRays';
 import {
@@ -72,7 +72,13 @@ function Navbar() {
             className="text-left group -ml-[64px] sm:-ml-[68px] md:-ml-[72px]"
           >
             <div className="flex items-center gap-2 md:gap-3">
-              <img src={carSvg} alt="Rishabh Motor Logo" className="h-9 w-auto object-contain md:h-11" />
+              <img
+                src={carWebp}
+                alt="Rishabh Motor Driving Training School Logo"
+                width="57"
+                height="44"
+                className="h-9 w-auto object-contain md:h-11"
+              />
               <div className="flex flex-col justify-center">
                 <span className="text-red-600 font-black text-lg sm:text-2xl uppercase tracking-tight leading-none">
                   Rishabh Motor
@@ -201,7 +207,7 @@ function Hero() {
             कार चलाना सीखें सरल व सुरक्षित तरीके से!
           </p>
           <p className="text-slate-500 text-base sm:text-lg max-w-lg mx-auto mb-10 leading-relaxed">
-            Professional driving lessons in the heart of Delhi — safe, structured, and built around your pace.
+            Professional car driving training in Najafgarh, New Delhi — safe, structured, and tailored to your pace.
           </p>
 
           {/* CTA */}
@@ -240,11 +246,12 @@ function Hero() {
         </div>
       </div>
 
-      {/* Hero image strip (safely outside the light rays wrapper) */}
       <div className="relative h-56 sm:h-72 md:h-96 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600&q=85&auto=format&fit=crop"
-          alt="Open road driving"
+          src="/open-road.webp"
+          alt="Student learning to drive on Delhi roads with Rishab Motor"
+          width="1000"
+          height="666"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/5" />
@@ -318,8 +325,10 @@ function Training() {
                 <div className="absolute top-5 right-5 w-12 h-12 border-4 border-green-100 rounded-full z-0 opacity-50 pointer-events-none"></div>
                 <div className="absolute bottom-5 left-5 w-6 h-6 bg-green-100 rounded-full z-0 opacity-50 pointer-events-none"></div>
                 <img
-                  src="/wagon-r.png"
-                  alt="Rishab Motor Training Wagon R"
+                  src="/wagon-r.webp"
+                  alt="Maruti Suzuki Wagon R dual control training car at Rishab Motor Driving School Najafgarh"
+                  width="384"
+                  height="384"
                   className="relative z-10 w-full max-w-[240px] sm:max-w-sm scale-110 drop-shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:scale-115"
                 />
               </div>
@@ -336,7 +345,7 @@ function Training() {
                   <div className="w-10 h-10 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center mb-2 shadow-sm">
                     <Icon size={18} className="text-green-800" />
                   </div>
-                  <h4 className="text-slate-900 font-bold text-base leading-tight">{title}</h4>
+                  <h3 className="text-slate-900 font-bold text-base leading-tight">{title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
                 </div>
               ))}
@@ -350,8 +359,10 @@ function Training() {
             <div className="absolute top-10 right-10 w-16 h-16 border-4 border-green-100 rounded-full z-0 opacity-50 pointer-events-none"></div>
             <div className="absolute bottom-10 left-10 w-8 h-8 bg-green-100 rounded-full z-0 opacity-50 pointer-events-none"></div>
             <img
-              src="/wagon-r.png"
-              alt="Rishab Motor Training Wagon R"
+              src="/wagon-r.webp"
+              alt="Maruti Suzuki Wagon R training vehicle with dual pedal control for safe driving instruction at Rishab Motor"
+              width="448"
+              height="448"
               className="relative z-10 w-full max-w-md scale-125 drop-shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-3 group-hover:scale-[1.35] translate-x-4"
             />
           </div>
@@ -361,11 +372,103 @@ function Training() {
   );
 }
 
+// ─── LOCAL SEO / FAQ SECTION ───────────────────────────────────────────────────
+function SEOSection() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    {
+      question: "Which is the best motor driving school in Najafgarh, Delhi?",
+      answer: "Rishab Motor Driving Training School is one of the best motor driving schools in Shyam Vihar & Najafgarh, New Delhi. We provide structured, beginner-friendly car driving classes with patient, certified instructors.",
+      icon: ShieldCheck
+    },
+    {
+      question: "Do you provide RTO driving license assistance in Najafgarh?",
+      answer: "Yes, we provide end-to-end guidance for obtaining both learning licenses and permanent driving licenses. We support you with the required RTO guidelines and test preparation.",
+      icon: FileCheck
+    },
+    {
+      question: "Are there special car driving classes for women/ladies?",
+      answer: "Absolutely! We focus on a comfortable and patient learning environment, offering private car driving classes for female students to build real on-road confidence.",
+      icon: Car
+    },
+    {
+      question: "Which locations in Najafgarh and South-West Delhi do you cover?",
+      answer: "We cover Shyam Vihar, Khatu Shyam Chowk, Dinpur, Chhawla, Goyla Khurd, Najafgarh Extension, Dwarka, and surrounding areas. We offer flexible batch timings to fit your schedule.",
+      icon: MapPin
+    },
+    {
+      question: "What are your course fees and timings?",
+      answer: "We offer highly affordable driving course packages with flexible timings from early morning to evening. Contact us via phone or WhatsApp for details on fees and duration.",
+      icon: Tag
+    }
+  ];
+
+  const toggle = (idx) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
+
+  return (
+    <section id="faq" className="bg-white py-20 md:py-28 border-b border-slate-100">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-16">
+          <p className="text-green-800 text-xs font-semibold uppercase tracking-widest mb-3">
+            Najafgarh Driving School Guide & FAQ
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight mb-4">
+            Najafgarh's Top-Rated Motor Driving School
+          </h2>
+          <p className="text-slate-500 text-base max-w-xl mx-auto leading-relaxed">
+            Everything you need to know about learning to drive a car and getting your license in Najafgarh, Delhi.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {faqs.map(({ question, answer, icon: Icon }, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <div 
+                key={idx} 
+                className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50 hover:bg-slate-50 transition-colors duration-200"
+              >
+                <button
+                  onClick={() => toggle(idx)}
+                  className="w-full flex items-center justify-between gap-4 p-5 text-left focus:outline-none"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center flex-shrink-0">
+                      <Icon size={16} className="text-green-800" />
+                    </div>
+                    <span className="font-bold text-slate-900 text-sm sm:text-base">{question}</span>
+                  </div>
+                  <ChevronDown 
+                    size={16} 
+                    className={`text-slate-400 transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`} 
+                  />
+                </button>
+                
+                <div 
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                    isOpen ? 'max-h-60 border-t border-slate-200' : 'max-h-0'
+                  }`}
+                >
+                  <p className="p-5 text-slate-600 text-sm leading-relaxed bg-white">
+                    {answer}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── CONTACT ───────────────────────────────────────────────────────────────────
-const VEHICLE_TYPES = ['Compact Hatchback', '4-Seater Sedan', 'Advanced SUV'];
 
 function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', vehicle: VEHICLE_TYPES[0] });
+  const [form, setForm] = useState({ name: '', phone: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) =>
@@ -373,7 +476,7 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const msg = `Hi Rishab Motor Driving School, I am ${form.name}. My phone number is ${form.phone}. I am interested in learning to drive a ${form.vehicle}.`;
+    const msg = `Hi Rishab Motor Driving School, I am ${form.name}. My phone number is ${form.phone}. I am interested in learning to drive.`;
     const url = `https://wa.me/918448922587?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
     setSubmitted(true);
@@ -405,13 +508,13 @@ function Contact() {
                 <p className="text-slate-900 font-semibold text-sm mb-1">Call or WhatsApp</p>
                 <a
                   href="tel:+918448922587"
-                  className="text-slate-600 hover:text-green-800 text-sm block transition-colors font-medium"
+                  className="text-slate-600 hover:text-green-800 text-sm block py-2 transition-colors font-medium"
                 >
                   +91 84489 22587
                 </a>
                 <a
                   href="tel:+919217484716"
-                  className="text-slate-600 hover:text-green-800 text-sm block transition-colors"
+                  className="text-slate-600 hover:text-green-800 text-sm block py-2 transition-colors"
                 >
                   +91 92174 84716
                 </a>
@@ -439,7 +542,7 @@ function Contact() {
               <div className="rounded-xl overflow-hidden border border-slate-200 h-56 md:h-64">
                 <iframe
                   title="Rishab Motor Driving School Location"
-                  src="https://maps.google.com/maps?q=Shyam%20Vihar,%20Najafgarh,%20New%20Delhi&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3502.987003530869!2d77.0034167!3d28.600166700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM2JzAwLjYiTiA3N8KwMDAnMTIuMyJF!5e0!3m2!1sen!2sin!4v1779881754749!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   allowFullScreen
@@ -500,34 +603,7 @@ function Contact() {
                 />
               </div>
 
-              {/* Vehicle Type */}
-              <div>
-                <label
-                  htmlFor="vehicle"
-                  className="block text-slate-700 text-sm font-medium mb-1.5"
-                >
-                  Preferred Vehicle Type
-                </label>
-                <div className="relative">
-                  <select
-                    id="vehicle"
-                    name="vehicle"
-                    value={form.vehicle}
-                    onChange={handleChange}
-                    className="w-full appearance-none border border-slate-300 focus:border-green-700 focus:ring-2 focus:ring-green-700/10 rounded-lg px-4 py-2.5 text-sm text-slate-900 outline-none transition-all cursor-pointer bg-white"
-                  >
-                    {VEHICLE_TYPES.map((v) => (
-                      <option key={v} value={v}>
-                        {v}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown
-                    size={15}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
-                  />
-                </div>
-              </div>
+
 
               {/* Submit */}
               <button
@@ -544,7 +620,7 @@ function Contact() {
                 )}
               </button>
 
-              <p className="text-slate-400 text-xs text-center pt-1">
+              <p className="text-slate-500 text-xs text-center pt-1">
                 This will open WhatsApp with a pre-filled message. No data is stored on our servers.
               </p>
             </form>
@@ -569,16 +645,20 @@ function Footer() {
           {/* Col 1 — Brand */}
           <div className="sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-green-700 flex items-center justify-center flex-shrink-0">
-                <Car size={16} className="text-white" />
-              </div>
+              <img
+                src="/favicon.svg"
+                alt="Rishab Motor Driving School Logo"
+                width="32"
+                height="32"
+                className="w-8 h-8 rounded-lg object-contain bg-white flex-shrink-0"
+              />
               <div>
                 <p className="text-white font-bold text-sm leading-tight">Rishab Motor</p>
                 <p className="text-green-500 text-xs font-medium leading-tight">Driving School</p>
               </div>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              Teaching Delhi to drive safely and confidently since 2006. RTO-approved curriculum, expert instructors.
+             <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
+              Najafgarh's trusted motor driving school since 2006. RTO-approved training curriculum and expert car driving instructors.
             </p>
           </div>
 
@@ -595,7 +675,7 @@ function Footer() {
                 <li key={label}>
                   <button
                     onClick={() => scrollTo(id)}
-                    className="text-slate-400 hover:text-white text-sm transition-colors duration-200 text-left"
+                    className="text-slate-500 hover:text-white text-sm transition-colors duration-200 text-left"
                   >
                     {label}
                   </button>
@@ -609,19 +689,19 @@ function Footer() {
             <p className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Contact</p>
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5">
-                <Phone size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <a href="tel:+918448922587" className="text-slate-400 hover:text-white text-sm block transition-colors font-medium">
+                <Phone size={14} className="text-green-500 mt-1.5 flex-shrink-0" />
+                <div className="flex flex-col">
+                  <a href="tel:+918448922587" className="text-slate-500 hover:text-white text-sm block py-1.5 transition-colors font-medium">
                     +91 84489 22587
                   </a>
-                  <a href="tel:+919217484716" className="text-slate-400 hover:text-white text-sm block transition-colors">
+                  <a href="tel:+919217484716" className="text-slate-500 hover:text-white text-sm block py-1.5 transition-colors">
                     +91 92174 84716
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPin size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <MapPin size={14} className="text-green-500 mt-1 flex-shrink-0" />
+                <p className="text-slate-500 text-sm leading-relaxed">
                   Shyam Vihar, Khatu Shyam Chowk,<br />Near Bai Indu Sharma Office,<br />Najafgarh, New Delhi
                 </p>
               </li>
@@ -651,9 +731,12 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white antialiased">
       <Navbar />
-      <Hero />
-      <Training />
-      <Contact />
+      <main>
+        <Hero />
+        <Training />
+        <SEOSection />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
