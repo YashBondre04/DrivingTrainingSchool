@@ -2,7 +2,7 @@
 
 A modern, professional website for **Rishab Motor Driving Training School** — a motor driving training institute located in Najafgarh, New Delhi. This project is a freelance web development gig built with cutting-edge front-end technologies.
 
-🌐 **Live Site:** [rishabh-driving-training-school.vercel.app](https://rishabh-driving-training-school.vercel.app)
+🌐 **Live Site:** [https://rishabmotor.vercel.app](https://rishabmotor.vercel.app)
 
 ---
 
